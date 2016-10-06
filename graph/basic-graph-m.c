@@ -28,7 +28,7 @@ int** initMatrix (int r, int c, int val) {
   return m;
 }
 
-Digraph initD (int V) { 
+Digraph initDigraph (int V) { 
   Digraph G = malloc (sizeof (*G));
   G->V = V; 
   G->A = 0;
@@ -36,21 +36,21 @@ Digraph initD (int V) {
   return G;
 }
 
-void insertArc (Digraph G, Vertex v, Vertex w) { 
+void insertArcDigraph (Digraph G, Vertex v, Vertex w) { 
   if (v != w && G->adj[v][w] == 0) {
     G->adj[v][w] = 1; 
     G->A++;
   }
 }
 
-void removeArc (Digraph G, Vertex v, Vertex w) { 
+void removeArcDigraph (Digraph G, Vertex v, Vertex w) { 
   if (G->adj[v][w] == 1) {
     G->adj[v][w] = 0; 
     G->A--;
   }
 }
 
-void printD (Digraph G) { 
+void printDigraph (Digraph G) { 
   Vertex v, w; 
   for (v = 0; v < G->V; v++) {
     printf("%2d:", v);
@@ -61,7 +61,7 @@ void printD (Digraph G) {
   }
 }
 
-Graph initG (int V) { 
+Graph initGraph (int V) { 
   Graph G = malloc(sizeof (*G));
   G->V = V;
   G->E = 0;
@@ -69,10 +69,18 @@ Graph initG (int V) {
    return G;
 }
 
-void insertEdge (Graph G, Vertex v, Vertex w) { 
+void insertEdgeGraph (Graph G, Vertex v, Vertex w) { 
   if (v != w && G->adj[v][w] == 0) {
     G->adj[v][w] = 1; 
     G->adj[w][v] = 1; 
     G->E++;
   }
+}
+
+void removeEdgeGraph (Graph G, Vertex v, Vertex w) {
+   if (G->adj[v][w] == 1 && G->adj[w][v] = 1) {
+	G->adj[v][w] = 0;
+	G->adj[w][v] = 0;
+	G->E--;
+   }
 }

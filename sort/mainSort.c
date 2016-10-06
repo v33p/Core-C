@@ -7,15 +7,15 @@
 int main (int argc, char** argv) {
   if (argc >= 2) {
     int size = atoi (argv[1]);
-    int* V = randomV (size, 100);
+    int* V = randomVector (size, 100);
 
     printf ("randomized: ");
-    printV (V, size);
+    printVector (V, size);
     
     mergeSort (V, 0, size-1);
 
     printf ("orderly:    ");
-    printV (V, size);
+    printVector (V, size);
     
   }
   

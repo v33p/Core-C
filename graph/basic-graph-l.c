@@ -30,7 +30,7 @@ link newNode (Vertex v, link next) {
   return x;
 }
 
-Digraph initD (int V) { 
+Digraph initDigraph (int V) { 
   Vertex v;
   Digraph G = malloc(sizeof (*G));
   G->V = V; 
@@ -41,7 +41,7 @@ Digraph initD (int V) {
   return G;
 }
 
-void insertArc (Digraph G, Vertex v, Vertex w) { 
+void insertArcDigraph (Digraph G, Vertex v, Vertex w) { 
   link p;
   if (v == w) return;
   for (p = G->adj[v]; p != NULL; p = p->next) 
@@ -50,7 +50,7 @@ void insertArc (Digraph G, Vertex v, Vertex w) {
   G->A++;
 }
 
-Graph initG (int V) { 
+Graph initGraph (int V) { 
   Vertex v;
   Graph G = malloc(sizeof (*G));
   G->V = V; 
@@ -61,7 +61,7 @@ Graph initG (int V) {
    return G;
 }
 
-void insertEdge (Graph G, Vertex v, Vertex w) { 
+void insertEdgeGraph (Graph G, Vertex v, Vertex w) { 
   link p;
   if (v == w) return;
   for (p = G->adj[v]; p != NULL; p = p->next) 
@@ -71,7 +71,17 @@ void insertEdge (Graph G, Vertex v, Vertex w) {
   G->E++;
 }
 
-void printD (Digraph G) {
+/*
+void removeEdgeGraph (Graph G, Vertex v, Vertex w) {
+	link p;
+	for (p = G->adj[v]; p != NULL; p = p->next) {
+		if (p->v == w) {
+			G->E--;
+		}
+	}
+}*/
+
+void printDigraph (Digraph G) {
   Vertex v, w;
   link p;
   for (v = 0; v < G->V; v++) {
@@ -82,7 +92,7 @@ void printD (Digraph G) {
   }
 }
 
-void printG (Graph G) {
+void printGraph (Graph G) {
   Vertex v, w;
   link p;
   for (v = 0; v < G->V; v++) {
